@@ -1,60 +1,68 @@
 package calc;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class RightTriangleController implements Initializable {
 
     @FXML
-    private ComboBox comboTriangle;
+    public ComboBox comboTriangle;
 
     @FXML
-    private Button btnCompute;
+    public Button btnCompute;
 
     @FXML
-    private Button btnClearAnswer;
+    public Button btnClearAnswer;
 
     @FXML
-    private Button btnClearAll;
+    public Button btnClearAll;
 
     @FXML
-    private TextField txtBoxA;
+    public TextField txtBoxA;
 
     @FXML
-    private TextField txtBoxB;
+    public TextField txtBoxB;
 
     @FXML
-    private TextField txtBoxC;
+    public TextField txtBoxC;
 
     @FXML
-    private RadioButton rbRoundOff;
+    public RadioButton rbRoundOff;
 
     @FXML
-    private RadioButton rbExact;
+    public RadioButton rbExact;
 
-    private ToggleGroup rbToggleGroup;
+    public ToggleGroup rbToggleGroup;
 
     DecimalFormat ef = new DecimalFormat("#.######");
     DecimalFormat df = new DecimalFormat("#.##");
 
-
+    ObservableList<String>  triangleList = FXCollections.observableArrayList("Right Triangle", "Oblique Triangle");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        txtBoxA.requestFocus();
+
 
         //This is the comboBox values for the Triangle Selector
-        comboTriangle.getItems().addAll("Right Triangle", "Acute Triangle", "Obtuse Triangle");
+        comboTriangle.setItems(triangleList);
 
         //This is the toggle group for the radio buttons
         rbToggleGroup = new ToggleGroup();
@@ -63,19 +71,48 @@ public class Controller implements Initializable {
 
     }
 
+    public void selectTriangle(ActionEvent event) throws IOException {
+
+        String triangleType = comboTriangle.getValue().toString();
+
+        if (triangleType == "Right Triangle") {
+
+            Parent rightTriangleLayout = FXMLLoader.load(getClass().getResource("RightTriangle.fxml"));
+            Scene rightTriangleScene = new Scene(rightTriangleLayout);
+
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(rightTriangleScene);
+            window.show();
+
+            System.out.println("This is the scene for Right Triangle.");
+        }
+
+        else if (triangleType == "Oblique Triangle") {
+
+            Parent obliqueTriangleLayout = FXMLLoader.load(getClass().getResource("ObliqueTriangle.fxml"));
+            Scene obliqueTriangleScene = new Scene(obliqueTriangleLayout);
+
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            window.setScene(obliqueTriangleScene);
+            window.show();
+
+            System.out.println("This is the scene for Oblique Triangle.");
+        }
+    }
+
 
     public void handleButtonEvent(ActionEvent e) {
 
         if (txtBoxA.getText() == null || txtBoxA.getText().trim().isEmpty()) {
             if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
                 this.btnClearAnswer.setOnAction((ActionEvent event) -> txtBoxA.clear());
-                //Display the value of the missing leg in exact value
-                txtBoxA.setText(String.valueOf(ef.format(this.findLeg(txtBoxC.getText(), txtBoxB.getText()))));
-            }
+                    //Display the value of the missing leg in exact value
+                    txtBoxA.setText(ef.format(RightTriangleController.this.findLeg(txtBoxC.getText(), txtBoxB.getText())));
+                }
             else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
                 this.btnClearAnswer.setOnAction((ActionEvent event) -> txtBoxA.clear());
-                //Display the value of the missing leg in decimal notation
-                txtBoxA.setText(String.valueOf(df.format(this.findLeg(txtBoxC.getText(), txtBoxB.getText()))));
+                    //Display the value of the missing leg in decimal notation
+                    txtBoxA.setText(df.format(RightTriangleController.this.findLeg(txtBoxC.getText(), txtBoxB.getText())));
             }
         }
 
@@ -83,12 +120,12 @@ public class Controller implements Initializable {
             if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
                 this.btnClearAnswer.setOnAction((ActionEvent event) -> txtBoxB.clear());
                 //Display the value of the missing leg in exact value
-                txtBoxB.setText(String.valueOf(ef.format(this.findLeg(txtBoxC.getText(), txtBoxA.getText()))));
+                txtBoxB.setText(ef.format(this.findLeg(txtBoxC.getText(), txtBoxA.getText())));
             }
             else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
                 this.btnClearAnswer.setOnAction((ActionEvent event) -> txtBoxB.clear());
                 //Display the value of the missing leg in decimal notation
-                txtBoxB.setText(String.valueOf(df.format(this.findLeg(txtBoxC.getText(), txtBoxA.getText()))));
+                txtBoxB.setText(df.format(this.findLeg(txtBoxC.getText(), txtBoxA.getText())));
             }
         }
 
@@ -96,12 +133,12 @@ public class Controller implements Initializable {
             if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
                 this.btnClearAnswer.setOnAction((ActionEvent event) -> txtBoxC.clear());
                 //Display the value of the missing leg in exact value
-                txtBoxC.setText(String.valueOf(df.format(findHypotenuse(txtBoxA.getText(), txtBoxB.getText()))));
+                txtBoxC.setText(ef.format(findHypotenuse(txtBoxA.getText(), txtBoxB.getText())));
             }
             else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
                 this.btnClearAnswer.setOnAction((ActionEvent event) -> txtBoxC.clear());
                 //Display the value of the missing leg in decimal notation
-                txtBoxC.setText(String.valueOf(df.format(findHypotenuse(txtBoxA.getText(), txtBoxB.getText()))));
+                txtBoxC.setText(df.format(findHypotenuse(txtBoxA.getText(), txtBoxB.getText())));
 
             }
         }
