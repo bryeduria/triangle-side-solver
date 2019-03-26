@@ -133,27 +133,25 @@ public class ObliqueTriangleController implements Initializable {
 
         //Formula for AAS
         if (this.rbTriangle.getSelectedToggle().equals(this.rbAAS)) {
-        System.out.println("AAS toggled");
+            System.out.println("AAS toggled");
             //Verify output
             if (((txtBoxAngleB.getText() == null) || (txtBoxAngleB.getText().trim().isEmpty())) && ((txtBoxSideB.getText() == null) || (txtBoxSideB.getText().trim().isEmpty())) && ((txtBoxSideC.getText() == null || (txtBoxSideC.getText().trim().isEmpty())))) {
                 System.out.println("Find Angle B, Side B and Side C");
                 if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
-                    txtBoxAngleB.setText(df.format(new formulaAAS().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
-                    txtBoxSideB.setText(df.format(new formulaAAS().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
-                    txtBoxSideC.setText(df.format(new formulaAAS().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
-                System.out.println("Round off");
+                    txtBoxAngleB.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
+                    txtBoxSideB.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    txtBoxSideC.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    System.out.println("Round off");
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleB.clear();
                         txtBoxSideB.clear();
                         txtBoxSideC.clear();
                     });
-                }
-
-                else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
-                    txtBoxAngleB.setText(ef.format(new formulaAAS().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
-                    txtBoxSideB.setText(ef.format(new formulaAAS().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
-                    txtBoxSideC.setText(ef.format(new formulaAAS().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
-                 System.out.println("Exact Value");
+                } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
+                    txtBoxAngleB.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
+                    txtBoxSideB.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    txtBoxSideC.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    System.out.println("Exact Value");
                     //clear output
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleB.clear();
@@ -167,9 +165,9 @@ public class ObliqueTriangleController implements Initializable {
             else if (((txtBoxAngleB.getText() == null) || (txtBoxAngleB.getText().trim().isEmpty())) && ((txtBoxSideB.getText() == null) || (txtBoxSideB.getText().trim().isEmpty())) && ((txtBoxSideA.getText() == null || (txtBoxSideA.getText().trim().isEmpty())))) {
 
                 if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
-                    txtBoxAngleB.setText(df.format(new formulaAAS().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
-                    txtBoxSideA.setText(df.format(new formulaAAS().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
-                    txtBoxSideB.setText(df.format(new formulaAAS().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleB.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
+                    txtBoxSideA.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
+                    txtBoxSideB.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleB.clear();
@@ -177,9 +175,9 @@ public class ObliqueTriangleController implements Initializable {
                         txtBoxSideB.clear();
                     });
                 } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
-                    txtBoxAngleB.setText(ef.format(new formulaAAS().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
-                    txtBoxSideA.setText(ef.format(new formulaAAS().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
-                    txtBoxSideB.setText(ef.format(new formulaAAS().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleB.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleC.getText())));
+                    txtBoxSideA.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
+                    txtBoxSideB.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleC.getText(), txtBoxSideC.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleB.clear();
@@ -193,9 +191,9 @@ public class ObliqueTriangleController implements Initializable {
             else if (((txtBoxAngleC.getText() == null) || (txtBoxAngleC.getText().trim().isEmpty())) && ((txtBoxSideC.getText() == null) || (txtBoxSideC.getText().trim().isEmpty())) && ((txtBoxSideA.getText() == null || (txtBoxSideA.getText().trim().isEmpty())))) {
 
                 if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
-                    txtBoxAngleC.setText(df.format(new formulaAAS().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
-                    txtBoxSideA.setText(df.format(new formulaAAS().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
-                    txtBoxSideC.setText(df.format(new formulaAAS().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    txtBoxAngleC.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
+                    txtBoxSideA.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    txtBoxSideC.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleC.clear();
@@ -203,9 +201,9 @@ public class ObliqueTriangleController implements Initializable {
                         txtBoxSideC.clear();
                     });
                 } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
-                    txtBoxAngleC.setText(ef.format(new formulaAAS().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
-                    txtBoxSideA.setText(ef.format(new formulaAAS().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
-                    txtBoxSideC.setText(ef.format(new formulaAAS().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    txtBoxAngleC.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
+                    txtBoxSideA.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    txtBoxSideC.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleC.clear();
@@ -219,9 +217,9 @@ public class ObliqueTriangleController implements Initializable {
             else if (((txtBoxAngleC.getText() == null) || (txtBoxAngleC.getText().trim().isEmpty())) && ((txtBoxSideC.getText() == null) || (txtBoxSideC.getText().trim().isEmpty())) && ((txtBoxSideB.getText() == null || (txtBoxSideB.getText().trim().isEmpty())))) {
 
                 if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
-                    txtBoxAngleC.setText(df.format(new formulaAAS().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
-                    txtBoxSideB.setText(df.format(new formulaAAS().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
-                    txtBoxSideC.setText(df.format(new formulaAAS().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
+                    txtBoxAngleC.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
+                    txtBoxSideB.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
+                    txtBoxSideC.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleC.clear();
@@ -229,9 +227,9 @@ public class ObliqueTriangleController implements Initializable {
                         txtBoxSideC.clear();
                     });
                 } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
-                    txtBoxAngleC.setText(ef.format(new formulaAAS().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
-                    txtBoxSideB.setText(ef.format(new formulaAAS().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
-                    txtBoxSideC.setText(ef.format(new formulaAAS().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
+                    txtBoxAngleC.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleA.getText())));
+                    txtBoxSideB.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
+                    txtBoxSideC.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleA.getText(), txtBoxSideA.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleC.clear();
@@ -245,9 +243,9 @@ public class ObliqueTriangleController implements Initializable {
             else if (((txtBoxAngleA.getText() == null) || (txtBoxAngleA.getText().trim().isEmpty())) && ((txtBoxSideA.getText() == null) || (txtBoxSideA.getText().trim().isEmpty())) && ((txtBoxSideB.getText() == null || (txtBoxSideB.getText().trim().isEmpty())))) {
 
                 if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
-                    txtBoxAngleA.setText(df.format(new formulaAAS().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
-                    txtBoxSideA.setText(df.format(new formulaAAS().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
-                    txtBoxSideB.setText(df.format(new formulaAAS().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleA.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
+                    txtBoxSideA.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    txtBoxSideB.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleA.clear();
@@ -255,9 +253,9 @@ public class ObliqueTriangleController implements Initializable {
                         txtBoxSideB.clear();
                     });
                 } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
-                    txtBoxAngleA.setText(ef.format(new formulaAAS().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
-                    txtBoxSideA.setText(ef.format(new formulaAAS().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
-                    txtBoxSideB.setText(ef.format(new formulaAAS().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleA.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
+                    txtBoxSideA.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    txtBoxSideB.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleA.clear();
@@ -271,9 +269,9 @@ public class ObliqueTriangleController implements Initializable {
             else if (((txtBoxAngleA.getText() == null) || (txtBoxAngleA.getText().trim().isEmpty())) && ((txtBoxSideA.getText() == null) || (txtBoxSideA.getText().trim().isEmpty())) && ((txtBoxSideC.getText() == null || (txtBoxSideC.getText().trim().isEmpty())))) {
 
                 if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
-                    txtBoxAngleA.setText(df.format(new formulaAAS().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
-                    txtBoxSideA.setText(df.format(new formulaAAS().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
-                    txtBoxSideC.setText(df.format(new formulaAAS().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
+                    txtBoxAngleA.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
+                    txtBoxSideA.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
+                    txtBoxSideC.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleA.clear();
@@ -281,9 +279,9 @@ public class ObliqueTriangleController implements Initializable {
                         txtBoxSideC.clear();
                     });
                 } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
-                    txtBoxAngleA.setText(ef.format(new formulaAAS().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
-                    txtBoxSideA.setText(ef.format(new formulaAAS().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
-                    txtBoxSideC.setText(ef.format(new formulaAAS().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
+                    txtBoxAngleA.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleB.getText())));
+                    txtBoxSideA.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
+                    txtBoxSideC.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleB.getText(), txtBoxSideB.getText())));
 
                     this.btnClearAnswer.setOnAction((ActionEvent event) -> {
                         txtBoxAngleA.clear();
@@ -303,6 +301,123 @@ public class ObliqueTriangleController implements Initializable {
             });
         }
 
+        //Formula for ASA
+        else if (this.rbTriangle.getSelectedToggle().equals(this.rbASA)) {
 
+            //Verify output
+            if (((txtBoxAngleC.getText() == null) || (txtBoxAngleC.getText().trim().isEmpty())) && ((txtBoxSideA.getText() == null) || (txtBoxSideA.getText().trim().isEmpty())) && ((txtBoxSideB.getText() == null || (txtBoxSideB.getText().trim().isEmpty())))) {
+                System.out.println("Find Angle B, Side B and Side C");
+                if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
+                    txtBoxAngleC.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleB.getText())));
+                    txtBoxSideA.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    txtBoxSideB.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    System.out.println("Round off");
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleC.clear();
+                        txtBoxSideA.clear();
+                        txtBoxSideB.clear();
+                    });
+                } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
+                    txtBoxAngleC.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleA.getText(), txtBoxAngleB.getText())));
+                    txtBoxSideA.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleA.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    txtBoxSideB.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleA.getText(), txtBoxAngleB.getText(), txtBoxSideC.getText())));
+                    System.out.println("Exact Value");
+                    //clear output
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleC.clear();
+                        txtBoxSideA.clear();
+                        txtBoxSideB.clear();
+                    });
+                }
+
+            }
+
+            //Verify output
+            else if (((txtBoxAngleA.getText() == null) || (txtBoxAngleA.getText().trim().isEmpty())) && ((txtBoxSideB.getText() == null) || (txtBoxSideB.getText().trim().isEmpty())) && ((txtBoxSideC.getText() == null || (txtBoxSideC.getText().trim().isEmpty())))) {
+                System.out.println("Find Angle B, Side B and Side C");
+                if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
+                    txtBoxAngleA.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleC.getText())));
+                    txtBoxSideB.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    txtBoxSideC.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    System.out.println("Round off");
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleA.clear();
+                        txtBoxSideB.clear();
+                        txtBoxSideC.clear();
+                    });
+                } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
+                    txtBoxAngleA.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleB.getText(), txtBoxAngleC.getText())));
+                    txtBoxSideB.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleB.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    txtBoxSideC.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleB.getText(), txtBoxAngleC.getText(), txtBoxSideA.getText())));
+                    System.out.println("Exact Value");
+                    //clear output
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleA.clear();
+                        txtBoxSideB.clear();
+                        txtBoxSideC.clear();
+                    });
+                }
+
+            }
+
+            //Verify output
+            else if (((txtBoxAngleB.getText() == null) || (txtBoxAngleB.getText().trim().isEmpty())) && ((txtBoxSideA.getText() == null) || (txtBoxSideA.getText().trim().isEmpty())) && ((txtBoxSideC.getText() == null || (txtBoxSideC.getText().trim().isEmpty())))) {
+                System.out.println("Find Angle B, Side B and Side C");
+                if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
+                    txtBoxAngleB.setText(df.format(new formulaAASASA().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleA.getText())));
+                    txtBoxSideA.setText(df.format(new formulaAASASA().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    txtBoxSideC.setText(df.format(new formulaAASASA().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    System.out.println("Round off");
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleB.clear();
+                        txtBoxSideA.clear();
+                        txtBoxSideC.clear();
+                    });
+                } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
+                    txtBoxAngleB.setText(ef.format(new formulaAASASA().findMissingAngle(txtBoxAngleC.getText(), txtBoxAngleA.getText())));
+                    txtBoxSideA.setText(ef.format(new formulaAASASA().findMissingSide1(txtBoxAngleC.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    txtBoxSideC.setText(ef.format(new formulaAASASA().findMissingSide2(txtBoxAngleC.getText(), txtBoxAngleA.getText(), txtBoxSideB.getText())));
+                    System.out.println("Exact Value");
+                    //clear output
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleB.clear();
+                        txtBoxSideA.clear();
+                        txtBoxSideC.clear();
+                    });
+                }
+
+            }
+
+        } else if (this.rbTriangle.getSelectedToggle().equals(this.rbSSS)) {
+
+            if (!((txtBoxSideA.getText() == null) || (txtBoxSideA.getText().trim().isEmpty())) && !((txtBoxSideB.getText() == null) || (txtBoxSideB.getText().trim().isEmpty())) && !((txtBoxSideC.getText() == null || (txtBoxSideC.getText().trim().isEmpty())))) {
+
+                txtBoxAngleA.setText(df.format(new formulaSSS().findAngleA(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                txtBoxAngleB.setText(df.format(new formulaSSS().findAngleB(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                txtBoxAngleC.setText(df.format(new formulaSSS().findAngleC(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+
+                if (this.rbToggleGroup.getSelectedToggle().equals(this.rbRoundOff)) {
+                    txtBoxAngleA.setText(df.format(new formulaSSS().findAngleA(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleB.setText(df.format(new formulaSSS().findAngleB(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleC.setText(df.format(new formulaSSS().findAngleC(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                    System.out.println("Round off");
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleA.clear();
+                        txtBoxAngleB.clear();
+                        txtBoxAngleC.clear();
+                    });
+                } else if (this.rbToggleGroup.getSelectedToggle().equals(this.rbExact)) {
+                    txtBoxAngleA.setText(ef.format(new formulaSSS().findAngleA(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleB.setText(ef.format(new formulaSSS().findAngleB(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                    txtBoxAngleC.setText(ef.format(new formulaSSS().findAngleC(txtBoxSideA.getText(), txtBoxSideB.getText(), txtBoxSideC.getText())));
+                    System.out.println("Exact Value");
+                    this.btnClearAnswer.setOnAction((ActionEvent event) -> {
+                        txtBoxAngleA.clear();
+                        txtBoxAngleB.clear();
+                        txtBoxAngleC.clear();
+                    });
+                }
+            }
+        }
     }
 }

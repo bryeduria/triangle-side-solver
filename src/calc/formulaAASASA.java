@@ -1,6 +1,6 @@
 package calc;
 
-public class formulaAAS {
+public class formulaAASASA {
 
     public double findMissingAngle( String x, String y) {
 
