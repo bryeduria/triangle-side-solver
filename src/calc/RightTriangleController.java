@@ -9,12 +9,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -50,6 +48,18 @@ public class RightTriangleController implements Initializable {
     @FXML
     public RadioButton rbExact;
 
+    @FXML
+    public MenuItem close;
+
+    @FXML
+    public MenuItem contact;
+
+    @FXML
+    public MenuBar menuBar;
+
+    @FXML
+    public Parent root;
+
     public ToggleGroup rbToggleGroup;
 
     DecimalFormat ef = new DecimalFormat("#.######");
@@ -69,6 +79,30 @@ public class RightTriangleController implements Initializable {
         this.rbExact.setToggleGroup(rbToggleGroup);
         this.rbRoundOff.setToggleGroup(rbToggleGroup);
 
+    }
+
+   @FXML
+    private void openContactUs() {
+        openWindow("/calc/Contact.fxml");
+    }
+
+    // ...
+
+    private void openWindow(String resource) {
+        try {
+            root = FXMLLoader.load(getClass().getResource(resource));
+            Scene scene = new Scene(root);
+            Stage newWindow = new Stage();
+            newWindow.setScene(scene);
+            newWindow.initModality(Modality.APPLICATION_MODAL); // makes stage act as a modal
+            newWindow.setMinWidth(250); // sets stage width
+            newWindow.setMinHeight(250); // sets stage height
+            newWindow.setResizable(false); // prevents resize and removes minimize and maximize buttons
+            newWindow.showAndWait(); // blocks execution until the stage is closed
+            newWindow.show();
+        } catch (Exception exc) {
+            // handle errors....
+        }
     }
 
     public void selectTriangle(ActionEvent event) throws IOException {
